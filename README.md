@@ -50,7 +50,7 @@ Este programa utiliza os seguintes argumentos como entrada para execução:
 
 ## Exemplo de uso
 
-1. **Criação do arquivo de parâmetros:**  <code>python blkprt.py --parameters blkprt_pars.json</code> 
+1. **Criação do arquivo de parâmetros:**  <code>python PCA_PARS.py --pars pars.json</code> 
 
 2. **Execução da análise:** <code>python PCA_PARS.py --pars pars.json --assay assay.csv</code>
   
