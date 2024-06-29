@@ -1,0 +1,21 @@
+{
+    "coluna_de_categorias": "CLI",
+    "codigos_das_categorias": [
+        "IC",
+        "IGO",
+        "IF",
+        "IFR",
+        "HF"
+    ],
+    "variaveis_numericas_de_analise": [
+        "feglc",
+        "mgglc",
+        "alglc",
+        "caglc",
+        "pglc",
+        "foglc",
+        "siglc"
+    ],
+    "codigo_valor_nao_atibuido": "-99.00",
+    "CSV_delimiter": ","
+}
