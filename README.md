@@ -4,7 +4,13 @@
 ## Introdução
 
 
-A Análise de Componentes Principais (PCA) em geoestatística é usada para reduzir a dimensionalidade dos dados espaciais, identificando as variáveis mais importantes que explicam a maior parte da variação nos dados. Isso facilita a visualização e interpretação das relações espaciais e padrões geográficos complexos.
+A Análise de Componentes Principais (PCA) é uma técnica de  redução de dimensionalidade e decorrelação de dados multivariados. Transforma uma distrubuição multivariada correlacionada em uma combinação linear ortogonal das variáveis originais. A técnica é de grande utilidade na geoestatística pelas seguintes rasões:
+
+1. Dados multivariados, consistindo em várias variáveis geológicas correlacionadas, são transformados por PCA para se tornarem não correlacionados. A modelagem geoestatística independente das variáveis decorrelacionadas então prossegue, antes que a retrotransformação do PCA restaure a correlação original às variáveis modeladas.
+
+2. PCA pode ser usado para redução de dimensionalidade no contexto acima. A modelagem geoestatística independente prossegue em um subconjunto das variáveis decorrelacionadas, antes que a retrotransformação do PCA forneça modelos de todas as variáveis originais.
+
+Fonte: [BARNETT, Ryan M. Principal component analysis. Geostatistics Lessons; Deutsch, JL, 2017.](https://geostatisticslessons.com/pdfs/principalcomponentanalysis.pdf)
 
 ## Sumário
 
