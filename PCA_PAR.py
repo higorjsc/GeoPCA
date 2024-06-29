@@ -1,3 +1,27 @@
+import subprocess
+import sys
+
+# Função para instalar uma biblioteca usando pip
+def install_package(package):
+    subprocess.check_call([sys.executable, "-m", "pip", "install", package])
+
+# Lista de pacotes necessários
+required_packages = ["pandas", "sklearn", "matplotlib", "numpy", "json", "argparse", "time"]
+
+# Verifica e instala pacotes
+print("\n Verificando dependencias...")
+for package in required_packages:
+    try:
+        __import__(package)
+    except ImportError:
+        print(f"{package} não está instalado. Instalando...")
+        if not package == "sklearn":
+            install_package(package)
+        else:
+            install_package('scikit-learn')
+
+print(" Tudo certo!\n")
+
 import pandas as pd
 from sklearn.decomposition import PCA
 from sklearn.preprocessing import StandardScaler
@@ -57,8 +81,7 @@ parser.add_argument("-p","--pars", type=str, help="Caminho do arquivo de parâme
 parser.add_argument("-a","--assay", type=str, help="Caminho do arquivo assay")
 args = parser.parse_args()
 
-print("\n")
-print(args,"\n")
+print(f'\n {args}',"\n")
 
 # Se o parametro --assay não for informado, um arquivo parametros.json será criado no local especificado
 if args.pars and not args.assay:
@@ -67,12 +90,18 @@ if args.pars and not args.assay:
 
 # Lê o arquivo parametros.json
 PARS = lerArquivoPars(args.pars)
-print(PARS, '\n')
-NA_VALUES_CODE = PARS["codigo_valor_nao_atibuido"]
-CSV_DELIMITER = PARS["CSV_delimiter"]
 COLUNA_CATEGORIAS = PARS["coluna_de_categorias"]
 CODIGOS_CATEGORIAS = PARS["codigos_das_categorias"]
 VARIAVEIS_NUMERICAS = PARS["variaveis_numericas_de_analise"]
+NA_VALUES_CODE = PARS["codigo_valor_nao_atibuido"]
+CSV_DELIMITER = PARS["CSV_delimiter"]
+print(
+    f' coluna_de_categorias: {COLUNA_CATEGORIAS}\n', 
+    f'codigos_das_categorias: {CODIGOS_CATEGORIAS}\n',
+    f'variaveis_numericas_de_analise: {VARIAVEIS_NUMERICAS}\n',
+    f'codigo_valor_nao_atibuido: {NA_VALUES_CODE}\n',
+    f'CSV_delimiter: {CSV_DELIMITER}\n',
+    )
 
 # FILE recebe o caminho do arquivo assay
 ASSAY_PATH = args.assay
