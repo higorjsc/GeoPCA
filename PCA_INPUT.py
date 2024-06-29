@@ -29,7 +29,7 @@ import matplotlib.pyplot as plt
 import numpy as np
 
 # BOAS VINDAS
-print("\nOlá Pati e/ou Mari!\n")
+print("\nOlá!\n")
 print("Coloque o arquivo assay na mesma pasta que este script!\n")
 
 while True:
