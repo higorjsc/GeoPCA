@@ -5,7 +5,8 @@
         "IGO",
         "IF",
         "IFR",
-        "HF"
+        "HF",
+        "HGO"
     ],
     "variaveis_numericas_de_analise": [
         "feglc",
@@ -17,5 +18,5 @@
         "siglc"
     ],
     "codigo_valor_nao_atibuido": "-99.00",
-    "CSV_delimiter": ","
+    "CSV_delimiter": ";"
 }

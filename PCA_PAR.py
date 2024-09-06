@@ -1,27 +1,3 @@
-import subprocess
-import sys
-
-# Função para instalar uma biblioteca usando pip
-def install_package(package):
-    subprocess.check_call([sys.executable, "-m", "pip", "install", package])
-
-# Lista de pacotes necessários
-required_packages = ["pandas", "sklearn", "matplotlib", "numpy", "json", "argparse", "time"]
-
-# Verifica e instala pacotes
-print("\n Verificando dependencias...")
-for package in required_packages:
-    try:
-        __import__(package)
-    except ImportError:
-        print(f"{package} não está instalado. Instalando...")
-        if not package == "sklearn":
-            install_package(package)
-        else:
-            install_package('scikit-learn')
-
-print(" Tudo certo!\n")
-
 import pandas as pd
 from sklearn.decomposition import PCA
 from sklearn.preprocessing import StandardScaler
@@ -35,13 +11,14 @@ from time import time
 def criarArquivoPars(filePath):
     
     parametros = {
-        "coluna_de_categorias":"CLI",
+        "coluna_de_categorias":"LITO",
         "codigos_das_categorias":[
             "IC",
             "IGO",
             "IF",
             "IFR",
 	        "HF",
+	        "HGO",
         ],
         "variaveis_numericas_de_analise":[
             "feglc",
@@ -53,7 +30,7 @@ def criarArquivoPars(filePath):
             "siglc",	
         ],
         "codigo_valor_nao_atibuido":"-99.00",
-        "CSV_delimiter":","
+        "CSV_delimiter":";"
     }
         
     # Escrevendo o DataFrame para um arquivo JSON com formatação
@@ -77,8 +54,8 @@ def lerArquivoPars(filePath):
         
 # DEFINE OS PARÂMETROS DE INPUT
 parser = argparse.ArgumentParser(description="Principal Component Analyses")
-parser.add_argument("-p","--pars", type=str, help="Caminho do arquivo de parâmetros JSON") 
-parser.add_argument("-a","--assay", type=str, help="Caminho do arquivo assay")
+parser.add_argument("-P","--pars", type=str, help="Caminho do arquivo de parâmetros JSON") 
+parser.add_argument("-A","--assay", type=str, help="Caminho do arquivo assay")
 args = parser.parse_args()
 
 print(f'\n {args}',"\n")
@@ -133,10 +110,10 @@ pca2dComponents = pca2d.fit_transform(pcaDataframeNormalizado)
 
 # Gráfico 2D
 plt.figure(figsize=(8, 6))
-for cli, color in color_map.items():
-    plt.scatter(pca2dComponents[colunaFiltrada == cli, 0],
-                pca2dComponents[colunaFiltrada == cli, 1],
-                label=cli, color=color)
+for categorias, color in color_map.items():
+    plt.scatter(pca2dComponents[colunaFiltrada == categorias, 0],
+                pca2dComponents[colunaFiltrada == categorias, 1],
+                label=categorias, color=color)
 plt.xlabel("Componente Principal 1")
 plt.ylabel("Componente Principal 2")
 plt.title("PCA 2D")
@@ -149,12 +126,12 @@ principal_components_3d = pca_3d.fit_transform(pcaDataframeNormalizado)
 # Gráfico 3D
 fig = plt.figure(figsize=(8, 6))
 ax = fig.add_subplot(111, projection="3d")
-for cli, color in color_map.items():
-    mask = (colunaFiltrada == cli)
+for categorias, color in color_map.items():
+    mask = (colunaFiltrada == categorias)
     ax.scatter(principal_components_3d[mask, 0],
                principal_components_3d[mask, 1],
                principal_components_3d[mask, 2],
-               label=cli, color=color)
+               label=categorias, color=color)
 ax.set_xlabel("Componente Principal 1")
 ax.set_ylabel("Componente Principal 2")
 ax.set_zlabel("Componente Principal 3")
