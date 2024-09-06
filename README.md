@@ -57,15 +57,11 @@ O algorítimo funciona da seguinte forma:
 ## Exemplo de uso
 
 
-1. Gere um arquivo json de parametros `pars.json`
-    ```bash
-    python PCA_PAR.py -P pars.json
+1. Gere um arquivo json de parametros: <code>python PCA_PAR.py -P pars.json</code>
 
 3. Preencha o arquivo de parâmetros
 
-2. Execute o script informando ambos os arquivos `pars.json` e `assay.csv`
-    ```bash
-    python PCA_PAR.py -P pars.json -A assay.csv
+2. Execute o script informando o arquivo de parametros e o de intervalos: <code>python PCA_PAR.py -P pars.json -A assay.csv</code>
   
 
 
