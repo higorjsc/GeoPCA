@@ -1,5 +1,4 @@
 # Análise de Componentes Principais (PCA)
-Higor Campos, 2024
 
 ## Introdução
 
